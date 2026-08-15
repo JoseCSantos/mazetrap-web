@@ -14,7 +14,7 @@
 <body>
 <main>
   <h1>MazeTrap privacy policy</h1>
-  <p><strong>Effective date:</strong> August 13, 2026</p>
+  <p><strong>Effective date:</strong> August 15, 2026</p>
   <p>MazeTrap is an offline-first game. Gameplay, progression, local
   leaderboards, sound, and the tutorial work without an internet connection.</p>
 
@@ -64,6 +64,23 @@
   <p>Country codes are derived by the hosting edge during a service request.
   The app does not request Android location permission and does not access GPS,
   Wi-Fi positioning, or precise location.</p>
+
+  <h2>Android permissions</h2>
+  <p>Google Play may describe MazeTrap's network and background-work
+  permissions using the following labels:</p>
+  <ul>
+    <li><strong>View network connections:</strong> checks whether a usable,
+    non-roaming connection is available before attempting an online request.</li>
+    <li><strong>Full network access:</strong> sends optional leaderboard and
+    analytics data to MazeTrap's service over HTTPS and retrieves global
+    rankings.</li>
+    <li><strong>Run at startup:</strong> allows Android WorkManager to restore
+    pending score or analytics uploads after the device restarts. It does not
+    open MazeTrap or start gameplay.</li>
+    <li><strong>Prevent device from sleeping:</strong> briefly keeps the CPU
+    active while WorkManager completes an upload and its local database update.
+    It does not wake or keep the screen on.</li>
+  </ul>
 
   <h2>Your controls</h2>
   <p>In Settings you can turn analytics off. Turning analytics off deletes
