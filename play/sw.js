@@ -1,6 +1,6 @@
-const CACHE = "mazetrap-native-web-xa6pkk7n";
+const CACHE = "mazetrap-native-web-pwjbhtmt";
 const CORE = [
-  "./assets/app-XA6PKK7N.js",
+  "./assets/app-PWJBHTMT.js",
   "./assets/audio/block_push.wav",
   "./assets/audio/final_victory.wav",
   "./assets/audio/invalid_move.wav",
@@ -264,7 +264,7 @@ const CORE = [
   "./assets/flags/za.png",
   "./assets/flags/zm.png",
   "./assets/flags/zw.png",
-  "./assets/styles-R27F3GDZ.css",
+  "./assets/styles-ROCS3T4L.css",
   "./index.html",
   "./manifest.webmanifest"
 ];
