@@ -1,0 +1,10 @@
+{
+  "name": "MazeTrap",
+  "short_name": "MazeTrap",
+  "description": "Push blocks, close every escape, and outsmart the hunters.",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#f2eee6",
+  "theme_color": "#215c45"
+}

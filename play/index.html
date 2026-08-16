@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#215c45">
+  <meta name="description" content="MazeTrap - push blocks, close every escape, outsmart the hunters.">
+  <meta name="copyright" content="Copyright 2026 Relit Studio. All rights reserved.">
+  <title>MazeTrap</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23215c45'/%3E%3Ccircle cx='32' cy='32' r='20' fill='%23347fd6'/%3E%3Crect x='18' y='22' width='28' height='12' rx='6' fill='%23d6f2ed'/%3E%3Ccircle cx='26' cy='28' r='2.5' fill='%2317212b'/%3E%3Ccircle cx='38' cy='28' r='2.5' fill='%2317212b'/%3E%3C/svg%3E">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/styles-WXJBYHCV.css">
+</head>
+<body>
+  <noscript>MazeTrap needs JavaScript enabled to run.</noscript>
+  <div id="app">
+    <section class="screen active" id="menu-screen" aria-label="Main menu">
+      <div class="menu-shell panel">
+        <div class="menu-hero">
+          <div class="hero-copy">
+            <h1>Outsmart the hunters</h1>
+            <p>Push the green blocks. Close every escape.</p>
+          </div>
+          <canvas id="menu-canvas" aria-hidden="true"></canvas>
+          <button class="play-button" id="play-button">
+            <span class="play-icon">▶</span>
+            <span><strong>PLAY</strong><small>The maze awaits</small></span>
+          </button>
+        </div>
+        <nav class="menu-nav">
+          <p class="eyebrow">EXPLORE</p>
+          <button class="nav-card" data-action="instructions"><span>▣</span>How to Play</button>
+          <button class="nav-card" data-action="leaderboards"><span>♜</span>Leaderboards</button>
+          <button class="nav-card" data-action="settings"><span>⚙</span>Settings &amp; Privacy</button>
+          <p class="offline-note">Local play works fully offline<br><small>Copyright © 2026 Relit Studio. All rights reserved.</small></p>
+        </nav>
+      </div>
+    </section>
+
+    <section class="screen" id="levels-screen" aria-label="Select level">
+      <header class="screen-header">
+        <button class="back-button" data-action="menu">← <span>BACK</span></button>
+        <h1>SELECT LEVEL</h1>
+        <span class="header-spacer"></span>
+      </header>
+      <div class="level-pages" id="level-pages"></div>
+      <div class="page-dots" id="level-dots" aria-label="Level pages"></div>
+    </section>
+
+    <section class="screen" id="instructions-screen" aria-label="How to play">
+      <div class="instructions-panel panel">
+        <h1>HOW TO PLAY</h1>
+        <div class="instructions-content">
+          <div class="demo-board"><canvas id="instructions-canvas"></canvas></div>
+          <div class="instructions-copy">
+            <p>You are the blue ball.</p>
+            <p>Push green blocks to trap every black hunter. Trapped hunters turn gray.</p>
+            <p>You win when no hunter can move. Avoid being caught or trapping yourself.</p>
+            <p>Swipe, tap a screen region, or use arrow / WASD keys.</p>
+          </div>
+        </div>
+        <div class="center-actions">
+          <button class="primary-button" id="tutorial-button">TUTORIAL</button>
+          <button class="primary-button" data-action="menu">GOT IT</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="leaderboards-screen" aria-label="Leaderboards">
+      <header class="screen-header compact-header">
+        <button class="back-button" data-action="menu">← <span>BACK</span></button>
+        <h1>LEADERBOARD</h1>
+        <div class="mode-switch" role="group" aria-label="Leaderboard source">
+          <button class="icon-toggle selected" id="local-board-button" title="Local leaderboard">▣</button>
+          <button class="icon-toggle" id="global-board-button" title="Global leaderboard">◎</button>
+        </div>
+      </header>
+      <div class="leaderboard-controls panel">
+        <span>LEVEL</span>
+        <div id="leaderboard-levels"></div>
+      </div>
+      <div class="period-switch hidden" id="period-switch">
+        <button data-period="daily">DAY</button>
+        <button data-period="weekly">WEEK</button>
+        <button data-period="monthly">MONTH</button>
+        <button class="selected" data-period="all_time">ALL</button>
+      </div>
+      <div class="leaderboard-panel panel">
+        <div class="leaderboard-heading">
+          <h2 id="leaderboard-title">LEVEL 1 LOCAL</h2>
+          <span id="leaderboard-status"></span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>PLAYER</th><th>TIME</th><th>MOVES</th><th>WHERE</th><th>SET AT</th></tr></thead>
+            <tbody id="leaderboard-body"></tbody>
+          </table>
+          <p class="empty-state" id="leaderboard-empty">NO COMPLETED RUNS YET</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="settings-screen" aria-label="Settings and privacy">
+      <header class="settings-header">
+        <div><h1>Settings &amp; Privacy</h1><p>Names, online services, analytics, and privacy</p></div>
+        <button class="back-button" data-action="menu">← <span>BACK</span></button>
+      </header>
+      <div class="settings-grid">
+        <section class="settings-panel panel">
+          <h2>LEADERBOARD DISPLAY NAMES</h2>
+          <label class="identity-card">
+            <strong>▣ &nbsp; Local identity</strong>
+            <input id="local-name" maxlength="12" autocomplete="nickname">
+          </label>
+          <label class="identity-card">
+            <strong>◎ &nbsp; Global identity</strong>
+            <input id="global-name" maxlength="12" autocomplete="nickname">
+            <button class="secondary-button" id="use-local-name" type="button">↻ &nbsp; USE LOCAL</button>
+          </label>
+          <p class="service-note" id="queue-status">Global score uploads: 0 pending</p>
+        </section>
+        <section class="settings-panel panel">
+          <h2>CONTROLS</h2>
+          <label class="toggle-card">
+            <span><strong>♫ &nbsp; Sound</strong><small>Menus and in-game sound</small></span>
+            <input type="checkbox" id="sound-toggle"><i></i>
+          </label>
+          <label class="toggle-card">
+            <span><strong>▥ &nbsp; Analytics</strong><small>Anonymous gameplay data to improve game</small></span>
+            <input type="checkbox" id="analytics-toggle"><i></i>
+          </label>
+          <label class="toggle-card">
+            <span><strong>◎ &nbsp; Global leaderboard</strong><small>Submit online scores</small></span>
+            <input type="checkbox" id="global-toggle"><i></i>
+          </label>
+          <a class="privacy-card" href="../privacy-policy.html" target="_blank" rel="noopener">
+            <span>♢</span><span><strong>Privacy policy</strong><small>Open HTML document</small></span>
+          </a>
+          <p class="offline-banner">▣ &nbsp; Local play works fully offline</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="screen game-screen" id="game-screen" aria-label="MazeTrap game">
+      <p class="game-description" id="game-description"></p>
+      <aside class="game-rail left-rail">
+        <button data-action="levels"><span>☰</span><small>LEVELS</small></button>
+        <button id="new-game-button"><span>↻</span><small>NEW</small></button>
+        <button id="pause-button"><span>Ⅱ</span><small>PAUSE</small></button>
+        <button id="game-sound-button"><span>♫</span><small>SOUND ON</small></button>
+      </aside>
+      <div class="board-stage"><canvas id="game-canvas" tabindex="0" aria-label="Playable maze board"></canvas></div>
+      <aside class="game-rail right-rail">
+        <div><strong id="hud-level">1</strong><small>LEVEL</small></div>
+        <div><strong id="hud-time">0s</strong><small>TIME</small></div>
+        <div><strong id="hud-moves">0</strong><small>MOVES</small></div>
+      </aside>
+      <div class="game-overlay hidden" id="game-overlay">
+        <div class="result-card panel">
+          <h2 id="result-title">LEVEL COMPLETE</h2>
+          <p id="result-subtitle">TRAP SECURED</p>
+          <div class="result-stats">
+            <div><strong id="result-time">0s</strong><small>TIME</small></div>
+            <div><strong id="result-moves">0</strong><small>MOVES</small></div>
+            <div><strong id="result-stars">★★★★★</strong><small>STARS</small></div>
+          </div>
+          <div class="center-actions">
+            <button class="secondary-button" id="result-secondary">LEVELS</button>
+            <button class="primary-button" id="result-primary">NEXT LEVEL</button>
+          </div>
+        </div>
+      </div>
+      <div class="tutorial-card hidden" id="tutorial-card">
+        <h2 id="tutorial-title">STEP 1 OF 4 - MOVE</h2>
+        <p id="tutorial-copy"></p>
+        <div class="center-actions">
+          <button class="secondary-button" id="tutorial-skip">SKIP</button>
+          <button class="primary-button hidden" id="tutorial-next">PRACTICE TRAP</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="modal hidden" id="name-modal" role="dialog" aria-modal="true" aria-labelledby="name-title">
+    <form class="modal-card panel" id="name-form">
+      <h2 id="name-title">LOCAL LEADERBOARD</h2>
+      <p id="name-copy">This run qualifies. Choose a name for the score.</p>
+      <input id="score-name" maxlength="12" required autocomplete="nickname">
+      <p class="validation" id="name-validation"></p>
+      <button class="primary-button" type="submit">SAVE SCORE</button>
+    </form>
+  </div>
+
+  <div class="toast hidden" id="toast" role="status"></div>
+  <script type="module" src="assets/app-IGZR77VB.js"></script>
+</body>
+</html>
