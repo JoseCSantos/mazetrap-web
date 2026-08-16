@@ -110,11 +110,11 @@
           <h2>LEADERBOARD DISPLAY NAMES</h2>
           <label class="identity-card">
             <strong>▣ &nbsp; Local identity</strong>
-            <input id="local-name" maxlength="12" autocomplete="nickname">
+            <input id="local-name" maxlength="12" autocomplete="off">
           </label>
           <label class="identity-card">
             <strong>◎ &nbsp; Global identity</strong>
-            <input id="global-name" maxlength="12" autocomplete="nickname">
+            <input id="global-name" maxlength="12" autocomplete="off">
             <button class="secondary-button" id="use-local-name" type="button">↻ &nbsp; USE LOCAL</button>
           </label>
           <p class="service-note" id="queue-status">Global score uploads: 0 pending</p>
@@ -185,7 +185,7 @@
     <form class="modal-card panel" id="name-form">
       <h2 id="name-title">LOCAL LEADERBOARD</h2>
       <p id="name-copy">This run qualifies. Choose a name for the score.</p>
-      <input id="score-name" maxlength="12" required autocomplete="nickname">
+      <input id="score-name" maxlength="12" required autocomplete="off">
       <p class="validation" id="name-validation"></p>
       <button class="primary-button" type="submit">SAVE SCORE</button>
     </form>
