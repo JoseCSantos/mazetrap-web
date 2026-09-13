@@ -1,109 +1,153 @@
 <!doctype html>
+<!-- Generated from the canonical privacy policy; edit docs/privacy-policy.md. -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MazeTrap Privacy Policy</title>
+  <title>MazeTrap privacy policy</title>
   <style>
     body { color: #1f2933; font: 17px/1.6 system-ui, sans-serif; margin: 0; }
     main { margin: 0 auto; max-width: 760px; padding: 32px 20px 64px; }
     h1, h2 { color: #102a43; line-height: 1.25; }
     h2 { margin-top: 2rem; }
+    a { color: #24543f; overflow-wrap: anywhere; }
+    li { margin-bottom: .5rem; }
   </style>
 </head>
 <body>
 <main>
-  <h1>MazeTrap privacy policy</h1>
-  <p><strong>Effective date:</strong> August 15, 2026</p>
-  <p>MazeTrap is an offline-first game. Gameplay, progression, local
-  leaderboards, sound, and the tutorial work without an internet connection.</p>
-
-  <h2>Optional online services</h2>
-  <p>MazeTrap uses internet access only for anonymous gameplay analytics and
-  the optional global leaderboard.</p>
-  <p>Anonymous analytics are enabled by default and can be turned off in
-  Settings. They may include an app-generated random identifier, game version,
-  coarse operating-system and device class, screens viewed, tutorial progress,
-  level attempts and outcomes, elapsed time, moves, pushes, invalid moves,
-  pauses, and control method. When an analytics batch reaches the service, the
-  hosting edge may infer a two-letter country code from the request's network
-  address. The network address itself is not retained by MazeTrap. MazeTrap
-  does not collect names, email addresses, advertising identifiers, contacts,
-  precise location, or move-by-move traces for analytics.</p>
-  <p>Global leaderboard participation is enabled by default and can be turned
-  off in Settings without affecting offline gameplay or local scores. MazeTrap
-  suggests a local display name using Android's permission-free device-name
-  setting when available, or the device model as a fallback. The initial global
-  display name follows that local name, but you can edit it independently or
-  restore the local name in Settings. Submitted data includes an app-generated
-  random player identifier, the global display name, level, completion time,
-  move count, game and rules versions, a scenario fingerprint, and an integrity
-  token on supported Google Play builds. The hosting edge may also infer a
-  two-letter country code for the submitted score. A small country flag or code
-  may be displayed publicly with that score. Country inference can be
-  inaccurate when a relay, mobile carrier, or VPN is used.</p>
-
-  <h2>Purpose and retention</h2>
-  <p>Analytics are used to understand reliability, tutorial effectiveness,
-  game difficulty, aggregate usage, and broad country-level differences. Raw
-  analytics, including the inferred country code, are retained for up to 90
-  days. Daily aggregates by country may be retained for up to 24 months.
-  Reports should suppress very small country cohorts.</p>
-  <p>Leaderboard data is used to display daily, weekly, monthly, and all-time
-  rankings and to prevent abuse. Accepted all-time scores may be retained while
-  the global leaderboard operates, including the country code associated with
-  each score. Expired shorter-period ranking rows may be removed after an
-  operational grace period.</p>
-
-  <h2>Storage, transfer, and service providers</h2>
-  <p>Queued online data is stored on your device until it can be sent.
-  Automatic traffic is limited to 1 MiB of application payload per UTC day.
-  Production transfers use HTTPS.</p>
-  <p>MazeTrap's hosting and database providers process data only to operate
-  these services. Data is not sold and is not used for advertising.</p>
-  <p>Country codes are derived by the hosting edge during a service request.
-  The app does not request Android location permission and does not access GPS,
-  Wi-Fi positioning, or precise location.</p>
-
-  <h2>Android permissions</h2>
-  <p>Google Play may describe MazeTrap's network and background-work
-  permissions using the following labels:</p>
-  <ul>
-    <li><strong>View network connections:</strong> checks whether a usable,
-    non-roaming connection is available before attempting an online request.</li>
-    <li><strong>Full network access:</strong> sends optional leaderboard and
-    analytics data to MazeTrap's service over HTTPS and retrieves global
-    rankings.</li>
-    <li><strong>Run at startup:</strong> allows Android WorkManager to restore
-    pending score or analytics uploads after the device restarts. It does not
-    open MazeTrap or start gameplay.</li>
-    <li><strong>Prevent device from sleeping:</strong> briefly keeps the CPU
-    active while WorkManager completes an upload and its local database update.
-    It does not wake or keep the screen on.</li>
-  </ul>
-
-  <h2>Your controls</h2>
-  <p>In Settings you can turn analytics off. Turning analytics off deletes
-  queued analytics and resets the random analytics identifier. You can leave
-  the global leaderboard without affecting offline gameplay or local scores.
-  Global leaderboard participation includes public display of the selected
-  global display name and the score's inferred country flag or code when
-  available. Local display names remain on the device. Clearing the app's
-  storage removes locally stored MazeTrap identifiers and queued data.</p>
-  <p>Display names that violate leaderboard rules may be rejected. Scores or
-  players may be removed or blocked to protect the leaderboard.</p>
-
-  <h2>Children</h2>
-  <p>MazeTrap is not designed to collect personal information from children.
-  The online services use random identifiers and do not request an email
-  address, real name, precise location, contacts, or advertising identifier.</p>
-
-  <h2>Changes and contact</h2>
-  <p>This policy may be updated when the online services change. The effective
-  date above will be updated. For privacy or deletion requests, email
-  <a href="mailto:info.relit.studio@gmail.com">info.relit.studio@gmail.com</a>
-  and include the leaderboard display name and player identifier shown by the
-  app when available.</p>
+<h1 id="mazetrap-privacy-policy">MazeTrap privacy policy</h1>
+<p><strong>Effective date:</strong> September 12, 2026 (UTC)</p>
+<p>This policy covers MazeTrap for Android, the browser game, and our game and
+share-link pages. No internet connection is needed for Android gameplay,
+progression, local leaderboards, sound, or How to Play. The browser game can
+work offline once its files have been cached; browser storage can be cleared
+or evicted.</p>
+<h2 id="data-on-your-device">Data on your device</h2>
+<p>MazeTrap stores settings, progression, local scores and display names, and
+resumable Android game state on your device. Online features also use locally
+generated identifiers and credentials, pending upload queues, and cached
+leaderboards. The browser uses local storage and an offline asset cache.
+Result sharing creates a temporary game image locally.</p>
+<h2 id="usage-analytics">Usage analytics</h2>
+<p>The setting currently labelled &quot;Anonymous analytics&quot; is enabled by default
+in Android and the browser and can be turned off in Settings. We use analytics
+to understand game difficulty, reliability, usage, and layout problems.</p>
+<p>Analytics can include random installation, session, event, and attempt
+identifiers; event timestamps; platform and screen dimensions, density, and
+layout class; screens viewed; and session and level summaries such as duration,
+level, outcome, moves, retries, and pauses. These identifiers allow events from
+the same installation or session to be associated. They are not a guarantee
+of completely anonymous data.</p>
+<p>The current How to Play screen records ordinary screen views, not tutorial
+steps. Older client versions may still send legacy tutorial or input-summary
+events. Analytics do not include display names, email addresses, contacts,
+advertising identifiers, precise location, or move-by-move recordings.</p>
+<h2 id="global-leaderboards">Global leaderboards</h2>
+<p>Global leaderboard participation is enabled by default on Android and is
+off by default in the browser. You can change it in Settings without affecting
+local play or local scores.</p>
+<p>The initial Android display name can use the permission-free device-name
+setting or device model. The browser suggests a device/browser label. The
+global name initially follows the local name but can be edited independently.
+A device name may contain personal information: review your global display
+name and use a nickname if you do not want that information published.</p>
+<p>Submissions include a random player identifier, display name, run identifier,
+level, time, moves, game and rules versions, and a hash identifying the
+starting game scenario. That scenario hash is not a hardware fingerprint.
+A separate private player credential authorizes profile and score changes;
+the backend stores its hash. Supported builds may also send a Google Play
+Integrity token for app, device, and licensing checks to prevent abuse.</p>
+<p>Global display names, scores, ranks, completion dates, and random player
+identifiers are available through the public leaderboard service. Private
+player credentials and analytics installation identifiers are not included
+in public leaderboard responses. Analytics and leaderboard identifiers are
+separate in MazeTrap's data model.</p>
+<h2 id="sharing-a-result">Sharing a result</h2>
+<p>When you choose Share, MazeTrap generates an image of the finished game board,
+outcome, level, time, moves, and game link. It does not record other apps or
+your device's screen generally. The image and result text are passed to the
+sharing app you choose; MazeTrap does not upload these result images to its
+backend. MazeTrap does not add a player identifier to the shared game link.</p>
+<p>Browsers may instead offer an image download or copy the result text and link
+to your clipboard. Saved images and copies sent to friends or social networks
+remain outside MazeTrap's control and follow the receiving service's privacy
+and retention practices. Clearing MazeTrap data does not remove those copies.</p>
+<h2 id="network-addresses-countries-and-providers">Network addresses, countries, and providers</h2>
+<p>MazeTrap does not infer or store countries for analytics or leaderboards and
+does not display country flags with scores. The game does not access GPS,
+Wi-Fi positioning, or precise location.</p>
+<p>Network addresses are processed to deliver requests and prevent abuse. The
+backend stores IP-derived hashed rate-limit keys and counters, rather than
+plain network addresses in its rate-limit table. This is distinct from
+hosting-provider request and security logs.</p>
+<ul>
+<li><strong>Supabase</strong> hosts the game API and database and processes that service data
+on our behalf.</li>
+<li><strong>GitHub Pages</strong> hosts the browser game, policy, and share-link pages.
+GitHub logs visitors' IP addresses for security, including visitors who are
+not signed in. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub privacy statement</a>.</li>
+<li><strong>Google Play</strong>, when integrity checks are enabled, processes integrity
+requests used to help assess app authenticity, device integrity, and
+licensing. See the <a href="https://developer.android.com/google/play/integrity/overview">Play Integrity overview</a>
+and <a href="https://policies.google.com/privacy">Google privacy policy</a>.</li>
+</ul>
+<p>Website visits, file downloads, integrity requests, and apps you choose for
+sharing can involve network processing beyond MazeTrap's analytics and
+leaderboard API. Production game-service transfers use HTTPS. Providers may
+process data outside your region. Their operational logs and backups are
+subject to their service arrangements and applicable retention practices.
+MazeTrap does not sell game data or use it for advertising.</p>
+<h2 id="retention">Retention</h2>
+<p>The application database's configured retention periods are 90 days for raw
+analytics and 24 months for daily aggregate analytics. These limits are
+applied by database maintenance, not by changing a setting on your device.
+Daily aggregates contain counts rather than individual event records.</p>
+<p>Leaderboard profiles, submitted scores, and related fraud-prevention records
+may be retained while the global service operates or until removed through
+moderation or a deletion request. Expiring a daily, weekly, or monthly ranking
+does not necessarily delete the underlying score. Rate-limit records have
+expiry times and are removed by database maintenance.</p>
+<p>Local data remains until removed by the app, your device/browser, or you.
+Shared-image cache files are temporary; downloaded or externally shared
+copies have their own retention. Provider logs and backups are separate from
+the application database periods above.
+Privacy correspondence may also be retained to handle and document requests.</p>
+<h2 id="your-choices-and-deletion-requests">Your choices and deletion requests</h2>
+<p>Turning analytics off stops new analytics recording, deletes locally queued
+analytics, and resets the local analytics identifier. Turning global
+participation off stops online leaderboard participation while it is off.
+Neither action automatically deletes information already received by the
+server or information already shared with others.</p>
+<p>You can edit display names and clear local app or browser data. Clearing local
+storage removes its saved identifiers and queues but does not delete server
+records. Device backup and restore settings may also affect local app data.
+Names or scores may be rejected, removed, or blocked to protect leaderboards.</p>
+<p>For access, correction, or deletion requests, contact
+<a href="mailto:info.relit.studio@gmail.com">info.relit.studio@gmail.com</a>.
+Include the platform, global display name, and player identifier if available.
+We may need further information to locate records and verify a request.
+Do not send passwords or private player credentials. Contacting us by email
+provides your email address and message, which we use to handle your request.</p>
+<h2 id="android-permissions">Android permissions</h2>
+<p>The app uses network and background-work permissions, including:</p>
+<ul>
+<li><strong>View network connections:</strong> Check connectivity before online requests.</li>
+<li><strong>Full network access:</strong> Communicate with online game services.</li>
+<li><strong>Run at startup:</strong> Let WorkManager restore pending uploads after a restart;
+it does not start gameplay.</li>
+<li><strong>Prevent device from sleeping:</strong> Briefly keep the CPU active for background
+work; it does not keep the screen awake.</li>
+</ul>
+<p>MazeTrap does not request location, contacts, camera, microphone, or broad
+storage permissions. Sharing grants the chosen app temporary read access to
+the generated result image, not to your other private game files.</p>
+<h2 id="children-and-policy-changes">Children and policy changes</h2>
+<p>A real name, email address, or date of birth is not required to play. Parents
+or guardians can contact us about privacy or deletion. Online features still
+process the data described above when enabled; random identifiers do not mean
+that no data is processed.</p>
+<p>We will update this policy and its effective date when these practices change.</p>
 </main>
 </body>
 </html>
