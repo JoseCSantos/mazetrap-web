@@ -7,96 +7,125 @@
   <meta name="description" content="MazeTrap - push blocks, close every escape, outsmart the hunters.">
   <meta name="copyright" content="Copyright 2026 Relit Studio. All rights reserved.">
   <title>MazeTrap</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23215c45'/%3E%3Ccircle cx='32' cy='32' r='20' fill='%23347fd6'/%3E%3Crect x='18' y='22' width='28' height='12' rx='6' fill='%23d6f2ed'/%3E%3Ccircle cx='26' cy='28' r='2.5' fill='%2317212b'/%3E%3Ccircle cx='38' cy='28' r='2.5' fill='%2317212b'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="assets/styles-J5L3EMMQ.css">
+  <link rel="stylesheet" href="assets/styles-LGPX37TC.css">
 </head>
 <body>
   <noscript>MazeTrap needs JavaScript enabled to run.</noscript>
   <div id="app">
-    <section class="screen active" id="menu-screen" aria-label="Main menu">
-      <div class="menu-shell panel">
-        <div class="menu-hero">
-          <div class="hero-copy">
-            <h1>Outsmart the hunters</h1>
-            <p>Push the green blocks. Close every escape.</p>
-          </div>
-          <canvas id="menu-canvas" aria-hidden="true"></canvas>
+    <section class="screen menu-screen active" id="menu-screen" aria-label="Main menu">
+      <div class="menu-shell">
+        <div class="menu-copy">
+          <h1>MAZETRAP</h1>
+          <h2>Outsmart the hunters.</h2>
+          <p class="menu-blurb">Push blocks. Close every escape.</p>
           <button class="play-button" id="play-button">
             <span class="play-icon">▶</span>
-            <span><strong>PLAY</strong><small>The maze awaits</small></span>
+            <span><strong id="play-title">PLAY</strong><small id="play-subtitle">Choose a level</small></span>
           </button>
+          <p class="menu-progress" id="menu-progress"></p>
+          <nav class="menu-nav">
+            <button class="nav-card hidden" id="choose-level-button" data-action="levels"><span>▦</span>Choose a level</button>
+            <button class="nav-card" data-action="instructions"><span>▣</span>How to Play</button>
+            <button class="nav-card" data-action="leaderboards"><span>♜</span>Leaderboards</button>
+            <button class="nav-card" data-action="settings"><span>⚙</span>Settings &amp; Privacy</button>
+          </nav>
+          <p class="offline-note">No internet connection needed to play.<br><small>Copyright © 2026 Relit Studio. All rights reserved.</small></p>
         </div>
-        <nav class="menu-nav">
-          <p class="eyebrow">EXPLORE</p>
-          <button class="nav-card" data-action="instructions"><span>▣</span>How to Play</button>
-          <button class="nav-card" data-action="leaderboards"><span>♜</span>Leaderboards</button>
-          <button class="nav-card" data-action="settings"><span>⚙</span>Settings &amp; Privacy</button>
-          <p class="offline-note">Local play works fully offline<br><small>Copyright © 2026 Relit Studio. All rights reserved.</small></p>
-        </nav>
+        <div class="menu-preview panel">
+          <header><strong id="menu-preview-title">READY FOR LEVEL 1</strong><span id="menu-preview-difficulty">EASY</span></header>
+          <div class="menu-board-stage"><canvas id="menu-canvas" aria-hidden="true"></canvas></div>
+          <p>Push green blocks. Trap every hunter.</p>
+        </div>
       </div>
     </section>
 
-    <section class="screen" id="levels-screen" aria-label="Select level">
-      <header class="screen-header">
-        <button class="back-button" data-action="menu">← <span>BACK</span></button>
+    <section class="screen levels-screen" id="levels-screen" aria-label="Select level">
+      <header class="level-screen-header">
+        <button class="leaderboard-icon-button" id="levels-back" aria-label="Back to main menu">←</button>
         <h1>SELECT LEVEL</h1>
-        <span class="header-spacer"></span>
+        <span id="level-progress"></span>
+        <button class="leaderboard-icon-button hidden" id="levels-menu" data-action="menu" aria-label="Main menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8M5 10v11h5v-6h4v6h5V10"/></svg>
+        </button>
       </header>
       <div class="level-pages" id="level-pages"></div>
-      <div class="page-dots" id="level-dots" aria-label="Level pages"></div>
+      <footer class="level-page-controls">
+        <button id="previous-level-page" aria-label="Previous level page">‹</button>
+        <div class="page-dots" id="level-dots" aria-label="Level pages"></div>
+        <span id="level-page-label"></span>
+        <button id="next-level-page" aria-label="Next level page">›</button>
+      </footer>
     </section>
 
-    <section class="screen" id="instructions-screen" aria-label="How to play">
+    <section class="screen instructions-screen" id="instructions-screen" aria-label="How to play">
       <div class="instructions-panel panel">
         <h1>HOW TO PLAY</h1>
         <div class="instructions-content">
-          <div class="demo-board"><canvas id="instructions-canvas"></canvas></div>
+          <figure class="instructions-figure">
+            <div class="illustration-labels"><span>BEFORE: PUSH RIGHT</span><span>AFTER: TRAPPED</span></div>
+            <img id="instructions-image" src="assets/trap-guide.png" width="1200" height="480"
+              alt="Before: the hunter has one escape on its left. After: the player pushes a block right into that opening. The surrounded hunter turns gray, and the player still has room to move.">
+          </figure>
           <div class="instructions-copy">
-            <p>You are the blue ball.</p>
-            <p>Push green blocks to trap every black hunter. Trapped hunters turn gray.</p>
-            <p>You win when no hunter can move. Avoid being caught or trapping yourself.</p>
-            <p>Swipe, tap a screen region, or use arrow / WASD keys.</p>
+            <h2>Trap every hunter</h2>
+            <p>Move the blue player and push green blocks to surround the hunters. Red walls cannot move. Trapped hunters turn gray.</p>
+            <p><strong>You win when no hunter can move.</strong> Don't get caught&mdash;or block your own escape!</p>
+            <p class="instructions-controls"><strong>Move:</strong> Swipe or tap a direction.<br>Keyboard: arrow keys or WASD.</p>
           </div>
         </div>
         <div class="center-actions">
-          <button class="primary-button" id="tutorial-button">TUTORIAL</button>
           <button class="primary-button" data-action="menu">GOT IT</button>
         </div>
       </div>
     </section>
 
-    <section class="screen" id="leaderboards-screen" aria-label="Leaderboards">
-      <header class="screen-header compact-header">
-        <button class="back-button" data-action="menu">← <span>BACK</span></button>
+    <section class="screen leaderboard-screen" id="leaderboards-screen" aria-label="Leaderboards">
+      <header class="leaderboard-toolbar">
+        <button class="leaderboard-icon-button" data-action="menu" aria-label="Back to main menu">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19 6 9 16l10 10M10 16h17"/></svg>
+        </button>
         <h1>LEADERBOARD</h1>
         <div class="mode-switch" role="group" aria-label="Leaderboard source">
-          <button class="icon-toggle selected" id="local-board-button" title="Local leaderboard">▣</button>
-          <button class="icon-toggle" id="global-board-button" title="Global leaderboard">◎</button>
+          <button class="selected" id="local-board-button" aria-label="Local leaderboard" aria-pressed="true">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="3" width="14" height="26" rx="3"/><path d="M13 7h6m-5 18h4"/></svg><span>LOCAL</span>
+          </button>
+          <button id="global-board-button" aria-label="Global leaderboard" aria-pressed="false">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><ellipse cx="16" cy="16" rx="5" ry="12"/><path d="M5 11h22M5 21h22"/></svg><span>GLOBAL</span>
+          </button>
         </div>
+        <button class="leaderboard-icon-button hidden" id="leaderboard-refresh" aria-label="Refresh leaderboard">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M25 11a10 10 0 1 0 1 9M25 5v7h-7"/></svg>
+        </button>
       </header>
-      <div class="leaderboard-controls panel">
-        <span>LEVEL</span>
-        <div id="leaderboard-levels"></div>
-      </div>
-      <div class="period-switch hidden" id="period-switch">
-        <button data-period="daily">DAY</button>
-        <button data-period="weekly">WEEK</button>
-        <button data-period="monthly">MONTH</button>
-        <button class="selected" data-period="all_time">ALL</button>
+      <div class="leaderboard-filters">
+        <div class="leaderboard-controls">
+          <span>LEVEL</span>
+          <div id="leaderboard-levels" role="group" aria-label="Leaderboard level"></div>
+        </div>
+        <div class="period-switch hidden" id="period-switch" role="group" aria-label="Leaderboard period">
+          <button data-period="daily"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg><span>DAY</span></button>
+          <button data-period="weekly"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M7 2v4m10-4v4M3 9h18M7 14h10"/></svg><span>WEEK</span></button>
+          <button data-period="monthly"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M7 2v4m10-4v4M3 9h18M8 9v12m8-12v12M3 15h18"/></svg><span>MONTH</span></button>
+          <button class="selected" data-period="all_time"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12C9 7 7 6 5 7 1 9 1 15 5 17c2 1 4 0 7-5 3-5 5-6 7-5 4 2 4 8 0 10-2 1-4 0-7-5Z"/></svg><span>ALL TIME</span></button>
+        </div>
       </div>
       <div class="leaderboard-panel panel">
         <div class="leaderboard-heading">
           <h2 id="leaderboard-title">LEVEL 1 LOCAL</h2>
-          <span id="leaderboard-status"></span>
+          <span id="leaderboard-status" role="status"></span>
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>#</th><th>PLAYER</th><th>TIME</th><th>MOVES</th><th>WHERE</th><th>SET AT</th></tr></thead>
+            <colgroup><col class="rank-column"><col><col class="time-column"><col class="moves-column"><col class="date-column"></colgroup>
+            <thead><tr><th>#</th><th>PLAYER</th><th>TIME</th><th>MOVES</th><th>SET AT</th></tr></thead>
             <tbody id="leaderboard-body"></tbody>
           </table>
           <p class="empty-state" id="leaderboard-empty">NO COMPLETED RUNS YET</p>
         </div>
+        <footer class="leaderboard-best" id="leaderboard-best">LOCAL BEST &mdash;</footer>
       </div>
     </section>
 
@@ -136,29 +165,46 @@
           <a class="privacy-card" href="../privacy-policy.html" target="_blank" rel="noopener">
             <span>♢</span><span><strong>Privacy policy</strong><small>Open HTML document</small></span>
           </a>
-          <p class="offline-banner">▣ &nbsp; Local play works fully offline</p>
+          <p class="offline-banner">▣ &nbsp; No internet connection needed to play.</p>
         </section>
       </div>
     </section>
 
     <section class="screen game-screen" id="game-screen" aria-label="MazeTrap game">
-      <p class="game-description" id="game-description"></p>
+      <div class="game-layout" id="game-layout">
+      <div class="game-status" id="game-status"><strong class="game-level">LEVEL <span id="hud-level">1</span></strong><p class="game-description" id="game-description"></p></div>
       <aside class="game-rail left-rail">
-        <button data-action="levels"><span>☰</span><small>LEVELS</small></button>
-        <button id="new-game-button"><span>↻</span><small>NEW</small></button>
-        <button id="pause-button"><span>Ⅱ</span><small>PAUSE</small></button>
+        <button data-action="levels" aria-label="Levels"><span aria-hidden="true">☰</span><small>LEVELS</small></button>
+        <button id="new-game-button" aria-label="New game"><span aria-hidden="true">↻</span><small>NEW</small></button>
+        <button id="pause-button" aria-label="Pause"><span aria-hidden="true">Ⅱ</span><small>PAUSE</small></button>
         <button class="fullscreen-button" id="fullscreen-button" hidden><span>⛶</span><small>FULLSCREEN</small></button>
-        <button id="game-sound-button"><span>♫</span><small>SOUND ON</small></button>
+        <button id="game-sound-button" aria-label="Sound on"><span aria-hidden="true">♫</span><small>SOUND ON</small></button>
       </aside>
       <div class="board-stage" id="board-stage"><canvas id="game-canvas" tabindex="0" aria-label="Playable maze board"></canvas></div>
       <aside class="game-rail right-rail">
-        <div><strong id="hud-level">1</strong><small>LEVEL</small></div>
-        <div><strong id="hud-time">0s</strong><small>TIME</small></div>
-        <div><strong id="hud-moves">0</strong><small>MOVES</small></div>
+        <div class="hud-stats">
+          <div class="hud-stat"><strong id="hud-time">0:00</strong><small>TIME</small></div>
+          <div class="hud-stat"><strong id="hud-moves">0</strong><small>MOVES</small></div>
+        </div>
+        <strong class="move-caption">MOVE</strong>
+        <div class="movement-pad" role="group" aria-label="Movement controls">
+          <button class="move-up" data-move="up" aria-label="Move up">↑</button>
+          <button class="move-left" data-move="left" aria-label="Move left">←</button>
+          <button class="move-right" data-move="right" aria-label="Move right">→</button>
+          <button class="move-down" data-move="down" aria-label="Move down">↓</button>
+        </div>
+        <span class="swipe-hint">Swipe also works</span>
       </aside>
+      </div>
       <div class="game-overlay hidden" id="game-overlay">
         <div class="result-card panel">
-          <h2 id="result-title">LEVEL COMPLETE</h2>
+          <div class="result-header">
+            <h2 id="result-title">LEVEL COMPLETE</h2>
+            <button id="result-share" aria-label="Share result" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4m-6.8 7 6.8 4"/></svg>
+              SHARE
+            </button>
+          </div>
           <p id="result-subtitle">TRAP SECURED</p>
           <div class="result-stats">
             <div><strong id="result-time">0s</strong><small>TIME</small></div>
@@ -169,20 +215,16 @@
             <button class="secondary-button" id="result-secondary">LEVELS</button>
             <button class="primary-button" id="result-primary">NEXT LEVEL</button>
           </div>
-        </div>
-      </div>
-      <div class="tutorial-card hidden" id="tutorial-card">
-        <h2 id="tutorial-title">STEP 1 OF 4 - MOVE</h2>
-        <p id="tutorial-copy"></p>
-        <div class="center-actions">
-          <button class="secondary-button" id="tutorial-skip">SKIP</button>
-          <button class="primary-button hidden" id="tutorial-next">PRACTICE TRAP</button>
+          <div id="result-share-tools" class="result-share-tools hidden">
+            <div><button id="result-save-image">Save image</button><button id="result-copy-text">Copy result + link</button></div>
+            <textarea id="result-share-text" aria-label="Result and game link" rows="3" readonly></textarea>
+          </div>
         </div>
       </div>
     </section>
   </div>
 
   <div class="toast hidden" id="toast" role="status"></div>
-  <script type="module" src="assets/app-NTKMQRNI.js"></script>
+  <script type="module" src="assets/app-LXT3ILAX.js"></script>
 </body>
 </html>
