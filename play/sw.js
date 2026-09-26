@@ -1,7 +1,7 @@
-const CACHE = "mazetrap-native-web-cb9705b5a0cd86ce";
+const CACHE = "mazetrap-native-web-b1f7292ca21d322a";
 const CORE = [
   "./",
-  "./assets/app-LXT3ILAX.js",
+  "./assets/app-5MZGGNTU.js",
   "./assets/audio/block_push.wav",
   "./assets/audio/final_victory.wav",
   "./assets/audio/invalid_move.wav",
