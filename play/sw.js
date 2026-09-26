@@ -1,7 +1,7 @@
-const CACHE = "mazetrap-native-web-b1f7292ca21d322a";
+const CACHE = "mazetrap-native-web-651fa4cff5271cde";
 const CORE = [
   "./",
-  "./assets/app-5MZGGNTU.js",
+  "./assets/app-L3B4SY6J.js",
   "./assets/audio/block_push.wav",
   "./assets/audio/final_victory.wav",
   "./assets/audio/invalid_move.wav",
@@ -20,7 +20,7 @@ const CORE = [
   "./assets/icons/icon-192.png",
   "./assets/icons/icon-512.png",
   "./assets/icons/icon-maskable-512.png",
-  "./assets/styles-LGPX37TC.css",
+  "./assets/styles-6UIAZ4UG.css",
   "./assets/trap-guide.png",
   "./index.html",
   "./manifest.webmanifest"
