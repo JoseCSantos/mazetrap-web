@@ -1,4 +1,4 @@
-const CACHE = "mazetrap-native-web-651fa4cff5271cde";
+const CACHE = "mazetrap-native-web-bce97fa054cac4a0";
 const CORE = [
   "./",
   "./assets/app-L3B4SY6J.js",
@@ -20,7 +20,7 @@ const CORE = [
   "./assets/icons/icon-192.png",
   "./assets/icons/icon-512.png",
   "./assets/icons/icon-maskable-512.png",
-  "./assets/styles-6UIAZ4UG.css",
+  "./assets/styles-VFSDHFSW.css",
   "./assets/trap-guide.png",
   "./index.html",
   "./manifest.webmanifest"
