@@ -10,7 +10,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="assets/styles-VFSDHFSW.css">
+  <link rel="stylesheet" href="assets/styles-4X2WJBRA.css">
 </head>
 <body>
   <noscript>MazeTrap needs JavaScript enabled to run.</noscript>
@@ -27,10 +27,21 @@
           </button>
           <p class="menu-progress" id="menu-progress"></p>
           <nav class="menu-nav">
-            <button class="nav-card hidden" id="choose-level-button" data-action="levels"><span>▦</span>Choose a level</button>
-            <button class="nav-card" data-action="instructions"><span>▣</span>How to Play</button>
-            <button class="nav-card" data-action="leaderboards"><span>♜</span>Leaderboards</button>
-            <button class="nav-card" data-action="settings"><span>⚙</span>Settings &amp; Privacy</button>
+            <button class="nav-card hidden" id="choose-level-button" data-action="levels">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7,4 L20,12 L7,20 Z"/></svg>Choose a level
+            </button>
+            <button class="nav-card" data-action="instructions">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3,5.5 Q3,4 4.5,4 L10.5,4 Q12,4 12,5.5 L12,20 Q10.5,18.5 8.5,18.5 L4.5,18.5 Q3,18.5 3,17 Z M21,5.5 Q21,4 19.5,4 L13.5,4 Q12,4 12,5.5 L12,20 Q13.5,18.5 15.5,18.5 L19.5,18.5 Q21,18.5 21,17 Z"/></svg>How to Play
+            </button>
+            <button class="nav-card" data-action="leaderboards">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7,3.5 L17,3.5 L17,9 Q17,14 12,14 Q7,14 7,9 Z M7,6 L4,6 L4,8 Q4,11 7.5,11 M17,6 L20,6 L20,8 Q20,11 16.5,11 M12,14 L12,19 M8.5,20.5 L15.5,20.5"/></svg>Leaderboards
+            </button>
+            <button class="nav-card" data-action="settings">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,3 L12,5 M12,19 L12,21 M3,12 L5,12 M19,12 L21,12 M5.6,5.6 L7,7 M17,17 L18.4,18.4 M18.4,5.6 L17,7 M7,17 L5.6,18.4 M12,7.5 A4.5,4.5 0,1 1,12 16.5 A4.5,4.5 0,1 1,12 7.5 M12,10.5 A1.5,1.5 0,1 1,12 13.5 A1.5,1.5 0,1 1,12 10.5"/></svg>Settings &amp; Privacy
+            </button>
+            <a class="nav-card hidden" id="android-download-link" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7,4 L20,12 L7,20 Z"/></svg>Get it on Google Play
+            </a>
           </nav>
           <p class="offline-note">No internet connection needed to play.</p>
         </div>
@@ -139,11 +150,11 @@
           <h2>LEADERBOARD DISPLAY NAMES</h2>
           <label class="identity-card">
             <strong>▣ &nbsp; Local identity</strong>
-            <input id="local-name" maxlength="25" autocomplete="off">
+            <input id="local-name" maxlength="50" autocomplete="off">
           </label>
           <label class="identity-card">
             <strong>◎ &nbsp; Global identity</strong>
-            <input id="global-name" maxlength="25" autocomplete="off">
+            <input id="global-name" maxlength="50" autocomplete="off">
             <button class="secondary-button" id="use-local-name" type="button">↻ &nbsp; USE LOCAL</button>
           </label>
           <p class="service-note" id="queue-status">Global score uploads: 0 pending</p>
@@ -225,6 +236,6 @@
   </div>
 
   <div class="toast hidden" id="toast" role="status"></div>
-  <script type="module" src="assets/app-L3B4SY6J.js"></script>
+  <script type="module" src="assets/app-VKGWTA3S.js"></script>
 </body>
 </html>
